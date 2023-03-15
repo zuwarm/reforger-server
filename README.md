@@ -1,18 +1,26 @@
-# Arma Reforger dedicated Server running on Docker Linux
+# Arma Reforger dedicated server Docker Linux
 
 ## Build the basic image
-docker build -t reforger:test .
+    docker build -t reforger:test .
 
 ## Build container from image
-edit and run:
+Edit and run:
+
     ./new_reforger_container.sh
 
-## Start/Stop game
-Start the container, this will install and update steamcmd and the game on every start (if needed).
+A config file must be provided as `live.json`.
+
+## Start/Stop game container
+Start: This will also install or update steamcmd and the game on every start (if needed).
+
     docker start reforger-server
+
 Stop:
+
     docker stop reforger-server
+
 Watch container logs
+
     docker logs reforger-server --follow
 
 ## Remove the container
