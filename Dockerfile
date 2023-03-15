@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-LABEL maintainer="anti"
+LABEL maintainer="zuwarm"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN apt-get update && apt-get install -y \
