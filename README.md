@@ -4,9 +4,15 @@
     docker build -t reforger:test .
 
 ## Build container from image
-Edit and run:
+Example:
 
-    ./new_reforger_container.sh
+    mkdir -p $HOME/reforger/configs
+
+    docker create \
+        --name=reforger-server \
+        -p 2001:2001/udp \
+        -v $HOME/reforger/configs:/reforger/Configs \
+        reforger:test
 
 A config file must be provided as `live.json`.
 
