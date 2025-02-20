@@ -12,6 +12,9 @@ Remove the image with:
 
 It makes sense to rebuild the image after big Arma updates. Otherwise the game gets updated on every launch which will take time and download bandwidth.
 
+To also remove the build cache (the game might stay in cache otherwise):
+    docker system prune
+
 ## Run the server
 
 When starting a container Steamcmd and ArmaReforger might get updated.
@@ -41,4 +44,8 @@ The container gets deleted.
     docker exec -it reforger-server bash
 
 Arma log files are in directory /reforger/log
+
+## Networking
+
+UDP port 2001 needs to be reachable from outside (in case of NAT).
 
