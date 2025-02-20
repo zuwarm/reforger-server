@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 LABEL maintainer="zuwarm"
 
@@ -7,8 +7,6 @@ RUN apt-get update && apt-get install -y \
         lib32gcc-s1 \
         wget \
         ca-certificates \
-        libcurl4 \
-        libssl1.1 \
         curl \
         jq \
     && rm -rf /var/lib/apt/lists/*
@@ -19,14 +17,14 @@ RUN mkdir -p /steamcmd \
 
 RUN echo -e '#!/usr/bin/env bash\n\
 /steamcmd/steamcmd.sh +force_install_dir /reforger +login anonymous +app_update 1874900 validate +quit\n\
-jq ".gameHostRegisterBindAddress = \"$(curl ifconfig.me)\"" /reforger/Configs/live.json > /reforger/Configs/live.json.tmp && chmod --reference=/reforger/Configs/live.json /reforger/Configs/live.json.tmp && chown --reference=/reforger/Configs/live.json /reforger/Configs/live.json.tmp && mv /reforger/Configs/live.json.tmp /reforger/Configs/live.json\n\
-./ArmaReforgerServer -config /reforger/Configs/live.json -backendlog -nothrow -maxFPS 120 -profile /home/profile\n' \ 
+jq ".publicAddress = \"$(curl -4 ifconfig.me)\"" /reforger/configs/live.json > /tmp/live.json\n\
+./ArmaReforgerServer -config /tmp/live.json -maxFPS 120 -profile /home/profile\n' \ 
 > /launch.sh && chmod 755 /launch.sh
 
 
 WORKDIR /reforger
 
-VOLUME /reforger/Configs
+VOLUME /reforger/configs
 
 EXPOSE 2001/udp
 # EXPOSE 17777/udp

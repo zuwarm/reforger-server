@@ -11,7 +11,7 @@ Example:
     docker create \
         --name=reforger-server \
         -p 2001:2001/udp \
-        -v $HOME/reforger/configs:/reforger/Configs \
+        -v $HOME/reforger/configs:/reforger/configs \
         reforger:test
 
 A config file must be provided as `live.json`.
