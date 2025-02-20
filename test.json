@@ -1,0 +1,26 @@
+{
+	"game": {
+		"name": "Test server",
+		"password": "test",
+		"passwordAdmin": "test",
+		"admins" : [],
+		"scenarioId": "{ECC61978EDCC2B5A}Missions/23_Campaign.conf",
+		"maxPlayers": 20,
+		"visible": true,
+		"gameProperties": {
+			"serverMaxViewDistance": 2500,
+			"serverMinGrassDistance": 50,
+			"networkViewDistance": 1500,
+			"disableThirdPerson": false,
+			"fastValidation": true,
+			"battlEye": true,
+			"VONDisableUI": false,
+			"VONDisableDirectSpeechUI": false,
+			"VONCanTransmitCrossFaction": false
+		},
+		"mods": []
+	    },
+    "operating": {
+        "lobbyPlayerSynchronise": true
+    }
+}
