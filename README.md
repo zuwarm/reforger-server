@@ -1,38 +1,36 @@
 # Arma Reforger dedicated server Docker Linux
 
-## Build the basic image
-    docker build -t reforger:test .
+## Build the image
 
-## Build container from image
-Example:
+    docker build -t reforger:latest .
 
-    mkdir -p $HOME/reforger/configs
+This might take some time. It contains Steamcmd and ArmaReforger dedicated server (~7 GB).
 
-    docker create \
+## Run the server
+
+When starting a container Steamcmd and ArmaReforger might get updated.
+The container mounts the current directory for Arma config mission files. The last parameter of the docker run command is the Arma config json file.
+
+    docker run \
+        -d \
+        --rm \
         --name=reforger-server \
         -p 2001:2001/udp \
-        -v $HOME/reforger/configs:/reforger/configs \
-        reforger:test
+        -v $PWD:/reforger/configs \
+        reforger:latest \
+	test.json
 
-A config file must be provided as `live.json`.
-
-## Start/Stop game container
-Start: This will also install or update steamcmd and the game on every start (if needed).
-
-    docker start reforger-server
-
-Stop:
+## Stop the server
 
     docker stop reforger-server
 
-Watch container logs
+The container gets deleted.
+
+## Watch container logs
 
     docker logs reforger-server --follow
 
-## Remove the container
-    docker rm reforger-server
-
 ## Debug a running container
-    docker exec -it reforger-server bash
 
+    docker exec -it reforger-server bash
 
