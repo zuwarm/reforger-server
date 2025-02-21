@@ -6,21 +6,21 @@
 
 This might take some time. It contains Steamcmd and Arma server (~7 GB).
 
-Remove the image with:
+Remove the image, if not needed any longer, with:
 
     docker rmi reforger:latest
 
 It makes sense to rebuild the image after big Arma updates. Otherwise the game gets updated on every launch. This would take time and download bandwidth.
 
-Docker's build cache might keep the big game files, to remove them:
+Docker's build cache might keep big game files, even if the image is removed. To remove them:
 
     docker system prune
 
 ## Run the server
 
-On every start Steamcmd runs an update check and updates itself and Arma if neccassary.
+On every start Steamcmd runs an update check and updates itself and Arma if necassary.
 
-The container mounts the current directory for Arma config mission files. The last parameter of the docker run command is the Arma config json file.
+The container mounts the current directory for Arma config files. The last parameter of the docker run command is the Arma config file json.
 
     docker run \
         -d \
