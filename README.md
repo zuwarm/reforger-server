@@ -18,7 +18,7 @@ Docker's build cache might keep big game files, even if the image is removed. To
 
 ## Run the server
 
-On every start Steamcmd runs an update check and updates itself and Arma if necassary.
+On every start, Steamcmd runs an update check and updates itself and Arma, if necassary.
 
 The container mounts the current directory for Arma config files. The last parameter of the docker run command is the Arma config file json.
 
