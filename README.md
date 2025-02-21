@@ -18,7 +18,8 @@ Docker's build cache might keep the big game files, to remove them:
 
 ## Run the server
 
-On every start runs an update check. Steamcmd and Arma might get updated.
+On every start Steamcmd runs an update check and updates itself and Arma if neccassary.
+
 The container mounts the current directory for Arma config mission files. The last parameter of the docker run command is the Arma config json file.
 
     docker run \
@@ -44,10 +45,11 @@ The container gets deleted.
 
     docker exec -it reforger-server bash
 
-Arma log files are in directory /reforger/log
+Arma log files are in directory `/reforger/log`
 
 ## Networking
 
-UDP port 2001 needs to be reachable from outside (in case of NAT). On launch the container determines the public IP and adds it to the config json file.
+UDP port 2001 needs to be reachable from outside (in case of NAT). On launch, the container determines the public IP and adds it to the config json file.
+
 Arma only supports IPv4!
 
