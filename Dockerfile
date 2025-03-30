@@ -20,7 +20,8 @@ RUN /steamcmd/steamcmd.sh +force_install_dir /reforger +login anonymous +app_upd
 RUN echo -e '#!/usr/bin/env bash\n\
 [ ! -f "/reforger/configs/$1" ] && echo "--> Missing config file." && exit 1\n\
 echo "--> Using config: $1"\n\
-jq ".publicAddress = \"$(curl -4 ifconfig.me)\"" /reforger/configs/$1 > /tmp/live.json\n\
+if [ -z "$2" ]; then PUBLICPORT=2001; else PUBLICPORT=$2; fi\n\
+jq ".publicAddress = \"$(curl -4 ifconfig.me)\" | .publicPort = $PUBLICPORT" /reforger/configs/$1 > /tmp/live.json\n\
 echo "--> Updating Reforger Server:"\n\
 /steamcmd/steamcmd.sh +force_install_dir /reforger +login anonymous +app_update 1874900 validate +quit\n\
 echo "--> Starting Arma Reforger Server:"\n\
