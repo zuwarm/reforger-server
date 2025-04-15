@@ -26,7 +26,7 @@ The container mounts the current directory for Arma config files. The last param
 
 Run a second server on port 2002 (optional second parameter).
 
-    docker run -d --rm --name=reforger-server -p 2002:2002/udp -v $PWD:/reforger/configs reforger:latest test.json 2002
+    docker run -d --rm --name=reforger-server-2 -p 2002:2002/udp -v $PWD:/reforger/configs reforger:latest test.json 2002
 
 ## Stop the server
 
