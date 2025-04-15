@@ -22,14 +22,11 @@ On every start, Steamcmd runs an update check and updates itself and Arma, if ne
 
 The container mounts the current directory for Arma config files. The last parameter of the docker run command is the Arma config file json.
 
-    docker run \
-        -d \
-        --rm \
-        --name=reforger-server \
-        -p 2001:2001/udp \
-        -v $PWD:/reforger/configs \
-        reforger:latest \
-	test.json
+    docker run -d --rm --name=reforger-server -p 2001:2001/udp -v $PWD:/reforger/configs reforger:latest test.json
+
+Run a second server on port 2002 (optional second parameter).
+
+    docker run -d --rm --name=reforger-server -p 2002:2002/udp -v $PWD:/reforger/configs reforger:latest test.json 2002
 
 ## Stop the server
 
